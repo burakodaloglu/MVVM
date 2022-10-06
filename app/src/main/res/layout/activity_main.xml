@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mainActivityNesnesi"
+            type="com.burakkodaloglu.mvvm.MainActivity" />
+
+        <variable
+            name="hesaplamaSonucu"
+            type="String" />
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+
+        <TextView
+            android:id="@+id/textViewSonuc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="83dp"
+            android:text="@{hesaplamaSonucu}"
+            android:textSize="32sp"
+            android:textColor="@{Integer.parseInt(hesaplamaSonucu)>10?@color/purple_700:@color/teal_700}"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextTextSayi1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:ems="10"
+            android:hint="Sayi 1 Giriniz"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSonuc" />
+
+        <EditText
+            android:id="@+id/editTextTextSayi2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:hint="Sayi 2 Giriniz"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextSayi1" />
+
+        <Button
+            android:id="@+id/buttonToplama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="@{()->mainActivityNesnesi.buttonToplamaTikla(editTextTextSayi1.getText().toString,editTextTextSayi2.getText().toString)}"
+            android:text="Toplama"
+            app:layout_constraintEnd_toStartOf="@+id/buttonCarpma"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextSayi2" />
+
+        <Button
+            android:id="@+id/buttonCarpma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="@{()->mainActivityNesnesi.buttonCarpmaTikla(editTextTextSayi1.getText().toString,editTextTextSayi2.getText().toString)}"
+            android:text="Çarpma"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonToplama"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextSayi2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
